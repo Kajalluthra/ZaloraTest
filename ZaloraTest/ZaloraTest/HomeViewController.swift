@@ -15,8 +15,15 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(composeFeedback))
         homeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+
+    @objc func composeFeedback(sender: UIBarButtonItem) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackViewController") as! FeedbackViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
