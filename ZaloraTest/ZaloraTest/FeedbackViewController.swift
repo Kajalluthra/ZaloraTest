@@ -9,9 +9,14 @@
 import Foundation
 import UIKit
 
+protocol FeedbackDelegate: class {
+    func didUpdateListManager(value : [String])
+}
+
 class FeedbackViewController: UIViewController {
     
     @IBOutlet weak var feedTextView: UITextView!
+    weak var delegate: FeedbackDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +24,10 @@ class FeedbackViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "done"), style: .plain, target: self, action: #selector(doneFeedback))
     }
     
-    @objc func doneFeedback(sender: UIBarButtonItem) {
-      
+    @objc func doneFeedback(_ sender: UIBarButtonItem) {
+        
+        delegate?.didUpdateListManager(value: ["hi"])
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -40,4 +47,3 @@ extension FeedbackViewController : UITextViewDelegate {
         }
     }
 }
-

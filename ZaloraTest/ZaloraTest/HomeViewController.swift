@@ -11,6 +11,8 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var homeTableView: UITableView!
+    var feedbackArray = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,6 +23,7 @@ class HomeViewController: UIViewController {
 
     @objc func composeFeedback(sender: UIBarButtonItem) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackViewController") as! FeedbackViewController
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -28,12 +31,20 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return feedbackArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "rs"
+        cell.textLabel?.text = feedbackArray[indexPath.row]
         return cell
+    }
+}
+
+extension HomeViewController: FeedbackDelegate {
+    
+    func didUpdateListManager(value: [String]) {
+        feedbackArray = value
+        homeTableView.reloadData()
     }
 }
