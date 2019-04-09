@@ -30,31 +30,12 @@ class FeedbackViewController: UIViewController {
         guard let message = feedTextView.text else {
             return
         }
-        
-        if validate(message){
-            showAlertPopUp(message: GlobalConstants.EmptyError)
-            
-        } else if message.count < GlobalConstants.Limit  {
-            let removeWhiteSpace = message.trimmingCharacters(in: .whitespaces)
-            delegate?.didUpdateListManager(value: [removeWhiteSpace])
+
+        let result = splitFeedback(message, length: GlobalConstants.Limit)
+        if !result.isEmpty {
+            delegate?.didUpdateListManager(value: result)
             self.navigationController?.popViewController(animated: true)
-            
-        } else if message.count > GlobalConstants.Limit && !checkWhiteSpace(message) {
-            manageFeedback(message)
         }
-    }
-    
-    func manageFeedback (_ text: String) {
-        let message = text.trimmingCharacters(in: .whitespaces)
-        let splitArray = splitFeedback(message, length: GlobalConstants.Limit)
-        var feedbackArray = [String]()
-        
-        for (index, element) in splitArray.enumerated() {
-            let number = index
-            feedbackArray.append("\(number+1)/\(splitArray.count) \(element)")
-        }
-        delegate?.didUpdateListManager(value: feedbackArray)
-        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -90,36 +71,57 @@ extension FeedbackViewController {
     
     func splitFeedback(_ text: String, length: Int) -> [String] {
         
-        let seperator = " "
-        var result = [String]()
-        var collectedWords = [String]()
-        var count = 0
-        let message = text.trimmingCharacters(in: .whitespaces)
-        if !message.contains(" ") && message.count > GlobalConstants.Limit {
-            showAlertPopUp(message: GlobalConstants.WhiteSpaceError)
-            return[]
-        }
-        collectedWords.reserveCapacity(length)
-        let words = message.components(separatedBy: " ")
-        
-        for word in words {
-            count += word.count + 1 // Add 1 for space
-            if (count > length) {   // Reached the desired length
-                
-                result.append(collectedWords.map { String($0) }.joined(separator: seperator) )
-                collectedWords.removeAll(keepingCapacity: true)
-                
-                count = word.count
-                collectedWords.append(word)
-            } else {
-                collectedWords.append(word)
+        if validate(text){
+            showAlertPopUp(message: GlobalConstants.EmptyError)
+            return []
+        } else if text.count < GlobalConstants.Limit  {
+            let removeWhiteSpace = text.trimmingCharacters(in: .whitespaces)
+            return [removeWhiteSpace]
+            
+        } else if text.count > GlobalConstants.Limit && !checkWhiteSpace(text) {
+            
+            let seperator = " "
+            var result = [String]()
+            var collectedWords = [String]()
+            var count = 0
+            let message = text.trimmingCharacters(in: .whitespaces)
+            if !message.contains(" ") && message.count > GlobalConstants.Limit {
+                showAlertPopUp(message: GlobalConstants.WhiteSpaceError)
+                return []
             }
+            
+            collectedWords.reserveCapacity(length)
+            let words = message.components(separatedBy: " ")
+            
+            for word in words {
+                count += word.count + 1 // Add 1 for space
+                if (count > length) {   // Reached the desired length
+                    
+                    result.append(collectedWords.map { String($0) }.joined(separator: seperator) )
+                    collectedWords.removeAll(keepingCapacity: true)
+                    count = word.count
+                    collectedWords.append(word)
+                    
+                } else {
+                    collectedWords.append(word)
+                }
+            }
+            
+            if !collectedWords.isEmpty { // Append the remainder
+                result.append(collectedWords.map { String($0) }.joined(separator: seperator))
+            }
+            
+            var feedbackArray = [String]() // Add 1/2 such cases
+            for (index, element) in result.enumerated() {
+                let number = index
+                feedbackArray.append("\(number+1)/\(result.count) \(element)")
+            }
+            
+            return feedbackArray
         }
-        
-        if !collectedWords.isEmpty { // Append the remainder
-            result.append(collectedWords.map { String($0) }.joined(separator: seperator))
+        else {
+            return []
         }
-        return result
     }
     
     func checkWhiteSpace(_ value: String) -> Bool {
