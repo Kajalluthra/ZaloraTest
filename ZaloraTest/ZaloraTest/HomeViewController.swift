@@ -37,6 +37,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = feedbackArray[indexPath.row]
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
         return cell
     }
 }

@@ -14,6 +14,8 @@
 		9E0A4807225B7AD8005FF185 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E0A4805225B7AD8005FF185 /* LaunchScreen.storyboard */; };
 		9E0A4812225B7AD8005FF185 /* ZaloraTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0A4811225B7AD8005FF185 /* ZaloraTestTests.swift */; };
 		9E0A481D225B7D2D005FF185 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0A481C225B7D2D005FF185 /* FeedbackViewController.swift */; };
+		9E0A4820225BA8D1005FF185 /* UIAlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0A481E225BA8D1005FF185 /* UIAlertExtension.swift */; };
+		9E0A4821225BA8D1005FF185 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0A481F225BA8D1005FF185 /* GlobalConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		9E0A4811225B7AD8005FF185 /* ZaloraTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZaloraTestTests.swift; sourceTree = "<group>"; };
 		9E0A4813225B7AD8005FF185 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E0A481C225B7D2D005FF185 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		9E0A481E225BA8D1005FF185 /* UIAlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertExtension.swift; sourceTree = "<group>"; };
+		9E0A481F225BA8D1005FF185 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 		9E0A47FB225B7AD7005FF185 /* ZaloraTest */ = {
 			isa = PBXGroup;
 			children = (
+				9E0A481E225BA8D1005FF185 /* UIAlertExtension.swift */,
+				9E0A481F225BA8D1005FF185 /* GlobalConstants.swift */,
 				9E0A47FC225B7AD7005FF185 /* AppDelegate.swift */,
 				9E0A481C225B7D2D005FF185 /* FeedbackViewController.swift */,
 				9E0A47FE225B7AD7005FF185 /* HomeViewController.swift */,
@@ -200,7 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E0A4820225BA8D1005FF185 /* UIAlertExtension.swift in Sources */,
 				9E0A47FF225B7AD7005FF185 /* HomeViewController.swift in Sources */,
+				9E0A4821225BA8D1005FF185 /* GlobalConstants.swift in Sources */,
 				9E0A481D225B7D2D005FF185 /* FeedbackViewController.swift in Sources */,
 				9E0A47FD225B7AD7005FF185 /* AppDelegate.swift in Sources */,
 			);
