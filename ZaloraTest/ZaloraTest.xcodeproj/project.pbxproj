@@ -83,11 +83,9 @@
 		9E0A47FB225B7AD7005FF185 /* ZaloraTest */ = {
 			isa = PBXGroup;
 			children = (
-				9E0A481E225BA8D1005FF185 /* UIAlertExtension.swift */,
-				9E0A481F225BA8D1005FF185 /* GlobalConstants.swift */,
 				9E0A47FC225B7AD7005FF185 /* AppDelegate.swift */,
-				9E0A481C225B7D2D005FF185 /* FeedbackViewController.swift */,
-				9E0A47FE225B7AD7005FF185 /* HomeViewController.swift */,
+				9E0A4822225C690F005FF185 /* ViewControllers */,
+				9E0A4823225C691E005FF185 /* Resources */,
 				9E0A4800225B7AD8005FF185 /* Main.storyboard */,
 				9E0A4803225B7AD8005FF185 /* Assets.xcassets */,
 				9E0A4805225B7AD8005FF185 /* LaunchScreen.storyboard */,
@@ -103,6 +101,24 @@
 				9E0A4813225B7AD8005FF185 /* Info.plist */,
 			);
 			path = ZaloraTestTests;
+			sourceTree = "<group>";
+		};
+		9E0A4822225C690F005FF185 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9E0A481C225B7D2D005FF185 /* FeedbackViewController.swift */,
+				9E0A47FE225B7AD7005FF185 /* HomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9E0A4823225C691E005FF185 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9E0A481E225BA8D1005FF185 /* UIAlertExtension.swift */,
+				9E0A481F225BA8D1005FF185 /* GlobalConstants.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

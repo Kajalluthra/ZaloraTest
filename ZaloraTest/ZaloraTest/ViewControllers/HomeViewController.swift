@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeTableView: UITableView!
     var feedbackArray = [String]()
     
+   //MARK:- App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -29,6 +30,7 @@ class HomeViewController: UIViewController {
 
 }
 
+//MARK:- UITableViewDataSource & UITableViewDelegate
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedbackArray.count
@@ -42,6 +44,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK:- FeedbackDelegate
 extension HomeViewController: FeedbackDelegate {
     
     func didUpdateListManager(value: [String]) {

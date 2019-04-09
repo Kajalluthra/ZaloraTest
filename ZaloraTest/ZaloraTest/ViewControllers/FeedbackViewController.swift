@@ -18,19 +18,11 @@ class FeedbackViewController: UIViewController {
     @IBOutlet weak var feedTextView: UITextView!
     weak var delegate: FeedbackDelegate?
     
+    //MARK:- App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "done"), style: .plain, target: self, action: #selector(doneFeedback))
-    }
-    
-    
-    func validate(_ message: String) -> Bool {
-        let filteredmsg = message.replacingOccurrences(of: " ", with: "")
-        if message.contains(GlobalConstants.EnterText) || filteredmsg.isEmpty || filteredmsg == "\n" {
-            return true
-        }
-        return false
     }
     
     @objc func doneFeedback(_ sender: UIBarButtonItem) {
@@ -66,6 +58,7 @@ class FeedbackViewController: UIViewController {
     }
 }
 
+//MARK:- UITextViewDelegate
 extension FeedbackViewController : UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -92,6 +85,7 @@ extension FeedbackViewController : UITextViewDelegate {
     }
 }
 
+//MARK:- Business logic
 extension FeedbackViewController {
     
     func splitFeedback(_ text: String, length: Int) -> [String] {
@@ -133,5 +127,12 @@ extension FeedbackViewController {
         return whitespace.isEmpty ? true : false
     }
     
+    func validate(_ message: String) -> Bool {
+        let filteredmsg = message.replacingOccurrences(of: " ", with: "")
+        if message.contains(GlobalConstants.EnterText) || filteredmsg.isEmpty || filteredmsg == "\n" {
+            return true
+        }
+        return false
+    }
 }
 
